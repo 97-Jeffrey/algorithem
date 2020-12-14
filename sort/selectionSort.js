@@ -1,4 +1,4 @@
-
+//we assume the first element in arr is minimum, then we compare the array after the minimum, if the element later is smaller than that, the later element's index is assigned the minimum index;
 
 const selectionSort = function(arr){
 
@@ -7,7 +7,7 @@ const selectionSort = function(arr){
      for(let j=i+1; j<arr.length; j++){
         if(arr[j]<arr[minIndex]){
           minIndex = j;
-        }
+        } 
      }
      let temp = arr[i];
      arr[i] = arr[minIndex];
