@@ -1,13 +1,14 @@
+// sort the arr from smallest to largest
+// compare each element to the one behind it, if it is bigger than that, switch position whith the one behind;
 
 const bubbleSort = function(arr){
   let isSorted = true;
   for(let i=0; i<arr.length; i++){
-
     for(let j =i+1;j<arr.length; j++){
       if(arr[i] > arr[j]){
-         let num= arr[i];
+         let temp= arr[i];
          arr[i] = arr[j];
-         arr[j] =num;
+         arr[j] =temp;
          isSorted = false;
       }
       if(isSorted){
