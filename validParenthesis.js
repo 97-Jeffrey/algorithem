@@ -1,6 +1,10 @@
 const validParantheses = str => {
   const stack = [];
-  const mapping = { ")": "(", "}": "{", "]": "[" };
+  const mapping = { 
+      ")": "(",
+      "}": "{", 
+      "]": "[" 
+  };
 
   for (let c of str) {
     if (mapping[c]) {
