@@ -12,6 +12,15 @@ isPalindrome = (head)=>{
   fast = head;
   slow = reverse(slow);
 
+  while(slow!==null){
+    if(fast.val!== slow.val){
+      return false
+    }
+    fast = fast.next;
+    slow = slow.next;
+  }
+  return true;
+
 }
 
 const reverse = (head) =>{
