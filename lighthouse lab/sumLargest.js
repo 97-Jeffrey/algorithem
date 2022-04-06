@@ -15,6 +15,15 @@ const sumLargestNumbers = function(data) {
 };
 
 
+
+const sumLargetNumbers2 = (data) =>{
+  const sortedData =  data.sort((a,b)=>b-a);
+  return sortedData[0] + sortedData[1]
+}
+
+
 console.log(sumLargestNumbers([1, 10]));
 console.log(sumLargestNumbers([1, 2, 3]));
 console.log(sumLargestNumbers([10, 4, 34, 6, 92, 2]));
+
+console.log(sumLargetNumbers2([2,2,12,4,7,4,6,9,4]))

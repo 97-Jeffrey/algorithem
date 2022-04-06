@@ -9,8 +9,8 @@ const checkAir = function (samples, threshold) {
     }
   }
    
-  status = pollutedCount/cleanCount > threshold? 'Polluted': 'Clean'
-  return status;
+  return pollutedCount/cleanCount > threshold? 'Polluted': 'Clean'
+  
   
 
 };

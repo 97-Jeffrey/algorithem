@@ -6,7 +6,7 @@ var missingNumber = function(nums) {
       console.log('this is '+ i)
       if(!nums.includes(i)){
          missingNum = i
-         }
+      }
   }
   return missingNum
 };

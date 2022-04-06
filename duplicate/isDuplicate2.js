@@ -14,3 +14,4 @@ const isDuplicate2 = function(arr){
   }
 
   console.log(isDuplicate2([1,2,3,4,5]))
+  console.log(isDuplicate2([1,2,2,3,4,5]))

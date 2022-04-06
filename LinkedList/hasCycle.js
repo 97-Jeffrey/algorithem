@@ -9,7 +9,7 @@ const hasCycle = (head) =>{
   if(head ==null) return false;
 
   let slow = head;
-  let fast = head.next();
+  let fast = head.next;
 
   while(fast!==slow){
     if(!fast || !fast.next) return false;
