@@ -11,4 +11,4 @@ var arrayRankTransform = function(arr) {
   return output
 };
 
-console.log(arrayRankTransform([37,12,28,9,100,56,80,5,12]))
+console.log(arrayRankTransform([40, 10,20,30]))
