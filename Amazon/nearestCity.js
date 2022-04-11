@@ -44,74 +44,74 @@
 
 const solveNearestCity = (points, xCoordinates, yCoordinates, queriedPoints) =>{
 
-  const allPointCoordinate ={};
-  const xCoorMap={};
-  const yCoorMap={};
-
+   const allPointsMap ={};
+   const xCoorMap = {};
+   const yCoorMap= {};
 
   for(let i=0; i<points.length; i++){
-    allPointCoordinate[points[i]] = {x:xCoordinates[i], y:yCoordinates[i]};
+    allPointsMap[points[i]] = {x: xCoordinates[i], y:yCoordinates[i]};
+
 
     if(!xCoorMap[xCoordinates[i]]){
-      xCoorMap[xCoordinates[i]] = [];
+      xCoorMap[xCoordinates[i]] = []
     }
     xCoorMap[xCoordinates[i]].push(points[i])
 
     if(!yCoorMap[yCoordinates[i]]){
-      yCoorMap[yCoordinates[i]] = [];
+      yCoorMap[yCoordinates[i]] = []
     }
     yCoorMap[yCoordinates[i]].push(points[i])
   }
 
-  let output = [];
-  
-  queriedPoints.forEach(query => {
-    const {x, y} = allPointCoordinate[query];
-    let p = null;
-   
+
+  let result = [];
+
+  queryPoints.forEach(query=>{
+    const {x, y} = allPointsMap[query];
+    let nearestPoint = { value: null, distance: Infinity};
+
+
     if(x in xCoorMap){
-      xCoorMap[x].forEach(point =>{
+      xCoorMap[x].forEach(point=>{
         if(point!==query){
-          // const {x:x1, y:y1} = allPointCoordinate[point];
-          // const yDistance = Math.abs(y1-y);
-          // if(yDistance<p.distance){
-          //   p.distance = yDistance;
-          //   p.value=point;
-          // }
-          p = point
+          const {x:x1, y:y1} = allPointsMap[point]
+          let yDistance = Math.abs(y1-y);
+          if(yDistance<nearestPoint.distance){
+            nearestPoint.distance = yDistance;
+            nearestPoint.value = point;
+          }
+          
         }
       })
     }
 
     if(y in yCoorMap){
-      yCoorMap[y].forEach(point =>{
+      yCoorMap[y].forEach(point=>{
         if(point!==query){
-          // const {x:x1, y:y1} = allPointCoordinate[point];
-          // const xDistance = Math.abs(x1-x);
-          // if(xDistance<p.distance){
-          //   p.distance = xDistance;
-          //   p.value=point;
-          // }
-          p=point
+          const {x:x1, y:y1} = allPointsMap[point]
+          let xDistance = Math.abs(x1-x);
+          if(xDistance<nearestPoint.distance){
+            nearestPoint.distance = xDistance;
+            nearestPoint.value = point;
+          }
         }
       })
     }
 
-    output.push(p)
+    result.push(nearestPoint.value)
 
+  })
 
-  });
-
-  return output;
+  return result
 
 }
 
 
 
-const points=["p1", "p2", "p3", "p4", "p5"];
-const xCoordinates =  [10, 20, 30, 40, 50]
-const yCoordinates =  [20, 20, 30, 40, 50]
-const queryPoints = ["p1", "p2", "p3", "p4", "p5"]
+const points=["p1", "p2", "p3"];
+const xCoordinates =  [30, 20, 10]
+const yCoordinates =  [30, 20, 30]
+const queryPoints = ["p3", "p2", "p1"]
 
 
 console.log(solveNearestCity(points, xCoordinates, yCoordinates, queryPoints))
