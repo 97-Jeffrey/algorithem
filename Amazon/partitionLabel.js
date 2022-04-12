@@ -17,27 +17,28 @@
 
 const partitionLabels = s =>{
 
-  let maxIndexFound = {};
-  let output  =[];
 
+  let lastIndexMap={};
   for(let i=0; i<s.length; i++){
-    maxIndexFound[s[i]]=i;
+    lastIndexMap[s[i]] = i;
   }
 
-  let currLength=0;
-  let maxStepsTogo = maxIndexFound[s[0]];
+  let maxStepsToGo = lastIndexMap[s[0]];
+  let currentLength = 0;
+  let result = [];
 
-  for(let i=0; i<s.length; i++){
-    currLength++;
-    maxStepsTogo = Math.max(maxStepsTogo, maxIndexFound[s[i]])
+  for (let i=0; i<s.length;i++){
+    currentLength++;
+    maxStepsToGo = Math.max(maxStepsToGo, lastIndexMap[s[i]])
 
-    if(maxStepsTogo === i){
-      output.push(currLength);
-      currLength = 0;
+    if(maxStepsToGo===i){
+      result.push(currentLength)
+      currentLength = 0;
     }
   }
 
-  return output;
+  return result;
+  
 }
 
 
