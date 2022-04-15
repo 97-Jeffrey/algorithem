@@ -3,21 +3,21 @@
 
 const reverseWord  = (sentence) =>{
 
-  const sentenceArr =  sentence.split(" ");
-  let start = 0;
-  let end = sentenceArr.length - 1 ;
+  let sentenceArr = sentence.split(" ");
 
+  let left = 0;
+  let right = sentenceArr.length-1;
 
-  while (start<end){
-    let temp = sentenceArr[start];
-    sentenceArr[start] =sentenceArr[end];
-    sentenceArr[end] = temp;
-     start ++;
-     end --;
+  while(left<right){
+    let temp = sentenceArr[left];
+    sentenceArr[left] = sentenceArr[right];
+    sentenceArr[right]  =temp;
+    left++
+    right--
   }
 
-  return sentenceArr.join(" ");
+  return sentenceArr.join(" ")
 
 }
 
-console.log(reverseWord("hello hahaha world"))
+console.log(reverseWord("hello  world"))
