@@ -1,34 +1,30 @@
 const topNCompetitor = (numCompetitors,topNCompetitors, competitors, numReviews, reviews) =>{
 
-  const storage = {};
 
+  let storage = {};
   for(let competitor of competitors){
-    competitor = competitor.toLowerCase();
     storage[competitor] = 0;
   }
 
-  
-  for(let competitor of competitors){
-    for(let review of reviews){
+  for(let review of reviews){
+    for(let competitor of competitors){
       review = review.toLowerCase();
       if(review.includes(competitor)){
-        storage[competitor]++;
+        storage[competitor]++
       }
-      
     }
   }
 
-
   let result = Object.keys(storage)
-                .sort((a,b)=>{
-                 if(storage[a] === storage[b]){
-                   return a>b?1:-1;
-                 }else{
-                  return storage[b]-storage[a]
-                 }})
-                .slice(0, topNCompetitors)
+                 .sort((a,b)=>{
+                   if(storage[a] === storage[b]){
+                     return a>b?1:-1
+                   }
+                   return storage[b] - storage[a]
+                 })
+                 .slice(0, topNCompetitors)
 
-  return result;
+return result
 
 }
 
@@ -41,9 +37,9 @@ console.log(topNCompetitor(
   ["newshop", "shopnow", "afashion", "fashionbeats", "mymarket", "tcellular"], 
   6,  
   [
-  "newshop is providing good services in the city; everyone should use newshop mymarket",
-  "best services by newshop mymarket",
-  " has great services in the city mymarket",
-  "I am proud to have shopnow",
-  "mymarket has awesome services shopnow",
-  "Thanks for the quick delivery"] ))
+    "newshop is providing good services in the city; everyone should use newshop",
+    "best services by newshop",
+    "fashionbeats has great services in the city",
+    "I am proud to have fashionbeats",
+    "mymarket has awesome services",
+    "Thanks Newshop for the quick delivery"] ))
