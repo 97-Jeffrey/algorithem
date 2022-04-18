@@ -1,17 +1,31 @@
+/*
+
+  Input: words = ["i","love","leetcode","i","love","coding"], k = 2
+  Output: ["i","love"]
+  
+  Explanation: "i" and "love" are the two most frequent words.
+  Note that "i" comes before "love" due to a lower alphabetical order.
+
+*/
+
+
 const topKFrequent = (words, k) =>{
-  const mappings = {}
-    for (let i = 0; i < words.length; i++) {
-        mappings[words[i]] = mappings[words[i]] + 1 || 1
+  const mapping = {};
+  for(let i =0; i<words.length; i++){
+    if(!mapping[words[i]]){
+      mapping[words[i]] = 0
     }
+    mapping[words[i]]++;
+  }
 
-    const sorted =  Object.keys(mappings).sort((a,b)=>{
-      if(mappings[a]===mappings[b]){
-        return a>b?1:-1;
-      }
-      return mappings[b]-mappings[a]
-    });
-
-    return sorted.slice(0,k)
+  let sortedArr = Object.keys(mapping)
+                  .sort((a,b)=>{
+                    if(mapping[a] === mapping[b]){
+                       return a>b? 1:-1
+                    }
+                    return mapping[b] - mapping[a]
+                  })
+  return sortedArr.slice(0,k)
 }
 
 

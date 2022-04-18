@@ -26,44 +26,50 @@ Emma has 2 Pop and 1 Dubstep song. Pop is Emma's favorite genre.
 
 const favoriteGenre = (users, genres) =>{
 
-  let output = {};
-  let songToGenre = {};
+  const output = {};
+  const songToGenre = {};
 
-  for (const genre in genres){
-    const songs  = genres[genre];
-    for(const song of songs){
-      songToGenre[song] = genre;
+  for(const genre in genres){
+    for(const song of genres[genre]){
+      songToGenre[song] = genre
     }
   }
 
-  for(const user in users){
-    const songs = users[user];
-
-    const count = {};
-    let max = 0;
+  for (const user in users){
     output[user] = [];
 
-    for(const song of songs){
-      const genre = songToGenre[song];
-      if(!count[genre]){
-        count[genre] = 0;
-      }
-      count[genre]++;
-      max = Math.max(max, count[genre])
-    }
+    let songs = users[user];
+    let storage ={};
+    let max = 0;
 
-    for(const genre in count){
-      if(count[genre] === max){
+    for(let song of songs){
+      let genre = songToGenre[song];
+      if(!storage[genre]) {
+        storage[genre] = 0;
+      }
+      storage[genre]++;
+      max = Math.max(max, storage[genre])
+    }
+    console.log(max)
+
+    for(let genre of Object.keys(storage)){
+      if(storage[genre] === max){
         output[user].push(genre)
       }
     }
 
   }
 
-
   return output;
 
+
+
 }
+
+
+
+
+
 const userSongs = {  
   "David": ["song1", "song2", "song3", "song4", "song8"],
   "Emma":  ["song5", "song6", "song7"]

@@ -13,30 +13,31 @@ The second group contains 'anything' so any fruit can be ordered in place of 'an
 function freshPromotion(codeList, shoppingCart) {
    
   let output = 0;
-  let arrIndex = 0;
-  let arrItemIndex = 0;
+  let fruitArrIndex = 0;
+  let fruitItemIndex = 0;
   let arrLength = codeList.length;
 
   shoppingCart.forEach(shoppingCartItem=>{
-    let fruitArr = codeList[arrIndex];
-    let fruit = fruitArr[arrItemIndex];
-     if(shoppingCartItem === fruit  || fruit  ==="anything"){
-       arrItemIndex ++;
-       if(arrItemIndex === fruitArr.length){
-         arrItemIndex = 0;
-         arrIndex ++;
 
-         if(arrIndex === arrLength){
-           output = 1;
-           return;
-         }
-       }
-     }else{
-       arrItemIndex = 0;
-     }
+    let fruitArr = codeList[fruitArrIndex];
+    let fruit = fruitArr[fruitItemIndex];
 
+    if(fruit === shoppingCartItem || fruit === 'anything'){
+      fruitItemIndex ++;
+      if(fruitItemIndex=== fruitArr.length){
+        fruitItemIndex = 0;
+        fruitArrIndex++;
+        if(fruitArrIndex === arrLength){
+          output = 1;
+          return output;
+        }
+      }
+    }else{
+      fruitItemIndex = 0;
+    }
   })
-return output
+
+  return output;
 
   
 }
