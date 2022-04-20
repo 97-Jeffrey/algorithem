@@ -10,25 +10,34 @@
 
 
 const topKFrequent = (words, k) =>{
-  const mapping = {};
-  for(let i =0; i<words.length; i++){
-    if(!mapping[words[i]]){
-      mapping[words[i]] = 0
+ 
+  const storage = {};
+
+  for(let word of words){
+    if(!storage[word]){
+      storage[word] = 0;
     }
-    mapping[words[i]]++;
+    storage[word] ++
   }
 
-  let sortedArr = Object.keys(mapping)
-                  .sort((a,b)=>{
-                    if(mapping[a] === mapping[b]){
-                       return a>b? 1:-1
-                    }
-                    return mapping[b] - mapping[a]
-                  })
-  return sortedArr.slice(0,k)
+  let result = Object.keys(storage)
+               .sort((a,b)=>{
+                 if(storage[a] === storage[b]){
+                   return a>b?1:-1
+                 }
+                 return storage[b] - storage[a]
+               })
+               .slice(0,k)
+
+  return result;
+
+
 }
+
+
 
 
 
 console.log(topKFrequent(["i", "love", "leetcode", "i", "love", "coding"], 2))
 
+console.log(topKFrequent(["the","day","is","sunny","the","the","the","sunny","is","is"], 4))
