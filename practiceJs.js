@@ -1,13 +1,16 @@
-function makeFunc() {
-  var name = 'Mozilla';
-  function displayName() {
-    // console.log(name);
-    return name;
-  }
-  return displayName;
+
+
+const person = {
+  name:'Jeffrey',
+  age:18
 }
 
-var myFunc = makeFunc();
-let name = myFunc();
 
-console.log(name)
+function test(a){
+  a =a +10;
+}
+var a =10;
+test(a)
+
+console.log(a)
+
