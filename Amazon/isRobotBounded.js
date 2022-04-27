@@ -14,11 +14,10 @@
 
 const isRobotBounded = (instructions) =>{
 
-  let directions = [
-    [0,1], [-1,0], [0,-1], [1,0]
-  ]
-  let currPosition = [0,0];
+  let directions = [[0,1], [-1,0], [0,-1], [1,0]]
   let currDirection = 0;
+  let currPosition = [0, 0];
+
 
   for(let i=0; i<instructions.length; i++){
     if(instructions[i] === 'G'){
@@ -26,16 +25,14 @@ const isRobotBounded = (instructions) =>{
       currPosition[1] += directions[currDirection][1]
     }
     else if(instructions[i] === 'L'){
-      currDirection = currDirection+1 >3? currDirection = 0: currDirection+=1;
+      currDirection = currDirection + 1>3? currDirection = 0: currDirection +=1;
     }
-    else if (instructions[i] === 'R'){
-      currDirection = currDirection -1 <0? currDirection = 3: currDirection -=1
+    else if(instructions[i] === 'R'){
+      currDirection = currDirection -1 <0? currDirection = 3: currDirection -=1;
     }
-
   }
 
-  return currPosition[0] + currPosition[1] === 0 || currDirection !==0;
-
+  return currPosition[0] + currPosition[1] ===0 || currDirection !==0
 
 
 
@@ -44,3 +41,27 @@ const isRobotBounded = (instructions) =>{
 console.log(isRobotBounded("GGLLGG"))
 console.log(isRobotBounded("GG"))
 console.log(isRobotBounded("GL"))
+
+
+// let directions = [
+//   [0,1], [-1,0], [0,-1], [1,0]
+// ]
+// let currPosition = [0,0];
+// let currDirection = 0;
+
+// for(let i=0; i<instructions.length; i++){
+//   if(instructions[i] === 'G'){
+//     currPosition[0] += directions[currDirection][0]
+//     currPosition[1] += directions[currDirection][1]
+//   }
+//   else if(instructions[i] === 'L'){
+//     currDirection = currDirection+1 >3? currDirection = 0: currDirection+=1;
+//   }
+//   else if (instructions[i] === 'R'){
+//     currDirection = currDirection -1 <0? currDirection = 3: currDirection -=1
+//   }
+
+// }
+
+// return currPosition[0] + currPosition[1] === 0 || currDirection !==0;
+

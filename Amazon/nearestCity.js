@@ -44,67 +44,125 @@
 
 const solveNearestCity = (points, xCoordinates, yCoordinates, queriedPoints) =>{
 
-   const allPointsMap ={};
-   const xCoorMap = {};
-   const yCoorMap= {};
+  const allCoorMap ={};
+  const xCoorMap = {};
+  const yCoorMap = {};
 
   for(let i=0; i<points.length; i++){
-    allPointsMap[points[i]] = {x: xCoordinates[i], y:yCoordinates[i]};
+    allCoorMap[points[i]] = {x: xCoordinates[i], y:yCoordinates[i]};
 
 
     if(!xCoorMap[xCoordinates[i]]){
-      xCoorMap[xCoordinates[i]] = []
+      xCoorMap[xCoordinates[i]] = [];
     }
     xCoorMap[xCoordinates[i]].push(points[i])
 
     if(!yCoorMap[yCoordinates[i]]){
-      yCoorMap[yCoordinates[i]] = []
+      yCoorMap[yCoordinates[i]] = [];
     }
     yCoorMap[yCoordinates[i]].push(points[i])
   }
 
-
-  let result = [];
-
-  queryPoints.forEach(query=>{
-    const {x, y} = allPointsMap[query];
-    let nearestPoint = { value: null, distance: Infinity};
-
+  let result =[];
+  queriedPoints.forEach(query => {
+    
+    const {x,y} = allCoorMap[query];
+    let nearestPoint = { distance: Infinity, point:null};
 
     if(x in xCoorMap){
       xCoorMap[x].forEach(point=>{
-        if(point!==query){
-          const {x:x1, y:y1} = allPointsMap[point]
+        if(point !== query){
+          const {x:x1, y:y1} = allCoorMap[point];
           let yDistance = Math.abs(y1-y);
-          if(yDistance<nearestPoint.distance){
+          if(yDistance < nearestPoint.distance){
             nearestPoint.distance = yDistance;
-            nearestPoint.value = point;
+            nearestPoint.point = point;
           }
-          
         }
       })
     }
 
     if(y in yCoorMap){
       yCoorMap[y].forEach(point=>{
-        if(point!==query){
-          const {x:x1, y:y1} = allPointsMap[point]
+        if(point !== query){
+          const {x:x1, y:y1} = allCoorMap[point];
           let xDistance = Math.abs(x1-x);
-          if(xDistance<nearestPoint.distance){
+          if(xDistance < nearestPoint.distance){
             nearestPoint.distance = xDistance;
-            nearestPoint.value = point;
+            nearestPoint.point = point;
           }
         }
       })
     }
 
-    result.push(nearestPoint.value)
+    result.push(nearestPoint.point)
 
-  })
 
+  });
   return result
 
 }
+
+
+// const allPointsMap ={};
+//    const xCoorMap = {};
+//    const yCoorMap= {};
+
+//   for(let i=0; i<points.length; i++){
+//     allPointsMap[points[i]] = {x: xCoordinates[i], y:yCoordinates[i]};
+
+
+//     if(!xCoorMap[xCoordinates[i]]){
+//       xCoorMap[xCoordinates[i]] = []
+//     }
+//     xCoorMap[xCoordinates[i]].push(points[i])
+
+//     if(!yCoorMap[yCoordinates[i]]){
+//       yCoorMap[yCoordinates[i]] = []
+//     }
+//     yCoorMap[yCoordinates[i]].push(points[i])
+//   }
+
+
+//   let result = [];
+
+//   queriedPoints.forEach(query=>{
+//     const {x, y} = allPointsMap[query];
+//     let nearestPoint = { value: null, distance: Infinity};
+
+
+//     if(x in xCoorMap){
+//       xCoorMap[x].forEach(point=>{
+//         if(point!==query){
+//           const {x:x1, y:y1} = allPointsMap[point]
+//           let yDistance = Math.abs(y1-y);
+//           if(yDistance<nearestPoint.distance){
+//             nearestPoint.distance = yDistance;
+//             nearestPoint.value = point;
+//           }
+          
+//         }
+//       })
+//     }
+
+//     if(y in yCoorMap){
+//       yCoorMap[y].forEach(point=>{
+//         if(point!==query){
+//           const {x:x1, y:y1} = allPointsMap[point]
+//           let xDistance = Math.abs(x1-x);
+//           if(xDistance<nearestPoint.distance){
+//             nearestPoint.distance = xDistance;
+//             nearestPoint.value = point;
+//           }
+//         }
+//       })
+//     }
+
+//     result.push(nearestPoint.value)
+
+//   })
+
+//   return result
 
 
 

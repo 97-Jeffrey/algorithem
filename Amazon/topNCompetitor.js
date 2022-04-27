@@ -1,31 +1,30 @@
 const topNCompetitor = (numCompetitors,topNCompetitors, competitors, numReviews, reviews) =>{
 
+  const storage  ={};
 
-  let storage = {};
-  for(let competitor of competitors){
-    storage[competitor] = 0;
+  for(const competitor of competitors){
+    storage[competitor] = 0
   }
 
-  for(let review of reviews){
-    for(let competitor of competitors){
+  for(const competitor of competitors){
+    for(let review of reviews){
       review = review.toLowerCase();
       if(review.includes(competitor)){
-        storage[competitor]++
+        storage[competitor] ++
       }
     }
   }
 
   let result = Object.keys(storage)
-                 .sort((a,b)=>{
-                   if(storage[a] === storage[b]){
-                     return a>b?1:-1
-                   }
-                   return storage[b] - storage[a]
-                 })
-                 .slice(0, topNCompetitors)
+               .sort((a,b)=>{
+                 if(storage[a] === storage[b]){
+                   return a>b? 1:-1
+                 }
+                 return storage[b] - storage[a]
+               })
+               .slice(0, numCompetitors)
 
-return result
-
+  return result
 }
 
 
@@ -43,3 +42,29 @@ console.log(topNCompetitor(
     "I am proud to have fashionbeats",
     "mymarket has awesome services",
     "Thanks Newshop for the quick delivery"] ))
+
+
+//     let storage = {};
+//   for(let competitor of competitors){
+//     storage[competitor] = 0;
+//   }
+
+//   for(let review of reviews){
+//     for(let competitor of competitors){
+//       review = review.toLowerCase();
+//       if(review.includes(competitor)){
+//         storage[competitor]++
+//       }
+//     }
+//   }
+
+//   let result = Object.keys(storage)
+//                  .sort((a,b)=>{
+//                    if(storage[a] === storage[b]){
+//                      return a>b?1:-1
+//                    }
+//                    return storage[b] - storage[a]
+//                  })
+//                  .slice(0, topNCompetitors)
+
+// return result

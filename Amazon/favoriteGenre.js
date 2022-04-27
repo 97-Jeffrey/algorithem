@@ -13,7 +13,8 @@ songGenres = {
    "Jazz":    ["song8", "song9"]
 }
 
-Output: {  
+Output: 
+{  
    "David": ["Rock", "Techno"],
    "Emma":  ["Pop"]
 }
@@ -26,46 +27,85 @@ Emma has 2 Pop and 1 Dubstep song. Pop is Emma's favorite genre.
 
 const favoriteGenre = (users, genres) =>{
 
-  const output = {};
-  const songToGenre = {};
+  let result = {};
+  let songToGenre = {};
 
   for(const genre in genres){
-    for(const song of genres[genre]){
+    const songs = genres[genre];
+    for(const song of songs){
       songToGenre[song] = genre
     }
+
   }
 
   for (const user in users){
-    output[user] = [];
-
-    let songs = users[user];
-    let storage ={};
+    result[user] = [];
     let max = 0;
-
+    let storage = {};
+    const songs = users[user];
     for(let song of songs){
       let genre = songToGenre[song];
-      if(!storage[genre]) {
-        storage[genre] = 0;
+      if(!storage[genre]){
+        storage[genre]=0;
       }
       storage[genre]++;
       max = Math.max(max, storage[genre])
     }
-    console.log(max)
 
-    for(let genre of Object.keys(storage)){
-      if(storage[genre] === max){
-        output[user].push(genre)
+    for(const genre of Object.keys(storage)){
+      if(storage[genre] = max){
+        result[user].push(genre)
       }
     }
 
+
   }
 
-  return output;
+  return result;
 
+  
 
 
 }
 
+
+
+
+// const output = {};
+// const songToGenre = {};
+
+// for(const genre in genres){
+//   for(const song of genres[genre]){
+//     songToGenre[song] = genre
+//   }
+// }
+
+// for (const user in users){
+//   output[user] = [];
+
+//   let songs = users[user];
+//   let storage ={};
+//   let max = 0;
+
+//   for(let song of songs){
+//     let genre = songToGenre[song];
+//     if(!storage[genre]) {
+//       storage[genre] = 0;
+//     }
+//     storage[genre]++;
+//     max = Math.max(max, storage[genre])
+//   }
+//   console.log(max)
+
+//   for(let genre of Object.keys(storage)){
+//     if(storage[genre] === max){
+//       output[user].push(genre)
+//     }
+//   }
+
+// }
+
+// return output;
 
 
 
