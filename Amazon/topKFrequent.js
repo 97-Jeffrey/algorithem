@@ -15,21 +15,17 @@ const topKFrequent = (words, k) =>{
 
   for(let word of words){
     if(!storage[word]){
-      storage[word] = 0;
+      storage[word] = 0
     }
-    storage[word] ++
+    storage[word]++
   }
 
   let result = Object.keys(storage)
-               .sort((a,b)=>{
-                 if(storage[a] === storage[b]){
-                   return a>b?1:-1
-                 }
-                 return storage[b] - storage[a]
-               })
+               .sort((a,b) => storage[b] - storage[a])
                .slice(0,k)
 
-  return result;
+  return result
+
 
 
 }

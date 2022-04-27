@@ -19,28 +19,27 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
 
 
   const numIslands = grid =>{
-     if(grid ===null || grid.length ===0) return 0;
-     let numberOfIsland = 0;
+     if(grid===null || grid.length ===0) return 0;
 
-     for(let i=0; i<grid.length; i++){
-       for(let j=0; j<grid[i].length; j++){
-         numberOfIsland += getNumIsland(grid, i,j)
+     let numsOfIsland = 0;
+     for(let i =0;i< grid.length; i++){
+       for(let j=0; j< grid[i].length; j++){
+          numsOfIsland += numberOfIsland(grid, i,j)
        }
      }
-     return numberOfIsland
+     return numsOfIsland
   }
 
-  const getNumIsland = (grid, i,j) =>{
-    if(i<0||j<0 || i>=grid.length || j>=grid[i].length|| grid[i][j] ==="0"){
+  const numberOfIsland = (grid, i, j)=>{
+    if(i<0 || j<0 || i>=grid.length|| j>=grid[i].length || grid[i][j] ==="0"){
       return 0;
     }
-
     grid[i][j] = "0";
 
-    getNumIsland(grid, i+1, j)
-    getNumIsland(grid, i-1, j)
-    getNumIsland(grid, i, j+1)
-    getNumIsland(grid, i, j-1)
+    numberOfIsland(grid, i+1, j);
+    numberOfIsland(grid, i-1, j);
+    numberOfIsland(grid, i, j+1);
+    numberOfIsland(grid, i, j-1);
 
     return 1;
   }
@@ -64,3 +63,30 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
     ]
   ))
 
+
+//   const numIslands = grid =>{
+//     if(grid === null || grid.length ==0) return 0;
+
+//     let numsOfIsland = 0
+//     for(let i=0; i<grid.length; i++){
+//       for(let j = 0; j<grid[i].length; j++){
+//          numsOfIsland += getNumbersOfIsland(grid, i, j)
+//       }
+//     }
+//     return numsOfIsland
+//  }
+
+//  const getNumbersOfIsland = (grid, i, j)=>{
+//    if(i<0 || j<0 || i >= grid.length|| j >= grid[i].length || grid[i][j] === '0'){
+//      return 0;
+//    }
+//     grid[i][j] = "0"
+
+//     getNumbersOfIsland(grid, i+1, j);
+//     getNumbersOfIsland(grid, i-1, j);
+//     getNumbersOfIsland(grid, i, j+1);
+//     getNumbersOfIsland(grid, i, j-1);
+
+//     return 1
+
+//  }

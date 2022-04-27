@@ -6,23 +6,25 @@
 
 
 const kClosest = (points, k) =>{
-
+ 
   let result = [];
 
   for(let [x,y] of points){
-    let distance = Math.sqrt(Math.pow(x,2)+ Math.pow(y,2));
-    result.push({ points: [x,y], distance })
+    let distance = Math.sqrt(Math.pow(x,2) + Math.pow(y,2));
+    result.push({ distance, points:[x, y]})
   }
+   console.log(result);
 
-  result.sort((a,b)=> a.distance - b.distance);
-  
-  let filtered = [];
+   result.sort((a,b)=> a.distance - b.distance);
+   
+   let filtered = []
+   result.forEach(each=>{
+     filtered.push(each.points)
+   })
 
-  result.forEach(each=>{
-    filtered.push(each.points)
-  })
 
-  return filtered.slice(0,k)
+
+   return filtered.slice(0,k)
 
 
 };

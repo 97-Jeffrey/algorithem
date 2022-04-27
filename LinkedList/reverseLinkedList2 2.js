@@ -9,6 +9,7 @@ const reverseLinkedList = (head, left, right) =>{
   for (let i=0; i<left-1; i++){
     previous = previous.next;
   }
+  
   let current = previous.next;
   let NEXT;
 

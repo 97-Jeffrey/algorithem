@@ -20,21 +20,33 @@
 
 const suggestedProducts = (products, searchWord) =>{
 
+
   let result = [];
 
-  products.sort((a,b) => a.localeCompare(b));
-
-
-  for(let i=0; i<searchWord.length; i++){
-    let filtered = products.filter(product => product.slice(0,i+1) === searchWord.slice(0,i+1))
-    filtered = filtered.slice(0,3);
+  for(let i=1; i<searchWord.length; i++){
+    let filtered = products.filter(product=> product.slice(0,i) === searchWord.slice(0,i)).slice(0,3)
     result.push(filtered)
+
   }
 
-  return result;
+  return result
+  
 }
 
 const products = ["mobile","mouse","moneypot","monitor","mousepad"]
 const searchWord = "mouse";
 console.log(suggestedProducts(products , searchWord));
 
+
+// let result = [];
+
+//   products.sort((a,b) => a.localeCompare(b));
+
+
+//   for(let i=0; i<searchWord.length; i++){
+//     let filtered = products.filter(product => product.slice(0,i+1) === searchWord.slice(0,i+1))
+//     filtered = filtered.slice(0,3);
+//     result.push(filtered)
+//   }
+
+//   return result;
