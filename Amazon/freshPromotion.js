@@ -1,7 +1,10 @@
 /*
    Example 1:
 
-Input: codeList = [[apple, apple], [banana, anything, banana]] shoppingCart = [orange, apple, apple, banana, orange, banana]
+Input: 
+codeList = [[apple, apple], [banana, anything, banana]] 
+shoppingCart = [orange, apple, apple, banana, orange, banana]
+
 Output: 1
 Explanation:
 codeList contains two groups - [apple, apple] and [banana, anything, banana].
@@ -42,32 +45,6 @@ function freshPromotion(codeList, shoppingCart) {
 }
 
 
-// let output = 0;
-//   let fruitArrIndex = 0;
-//   let fruitItemIndex = 0;
-//   let arrLength = codeList.length;
-
-//   shoppingCart.forEach(shoppingCartItem=>{
-
-//     let fruitArr = codeList[fruitArrIndex];
-//     let fruit = fruitArr[fruitItemIndex];
-
-//     if(fruit === shoppingCartItem || fruit === 'anything'){
-//       fruitItemIndex ++;
-//       if(fruitItemIndex=== fruitArr.length){
-//         fruitItemIndex = 0;
-//         fruitArrIndex++;
-//         if(fruitArrIndex === arrLength){
-//           output = 1;
-//           return output;
-//         }
-//       }
-//     }else{
-//       fruitItemIndex = 0;
-//     }
-//   })
-
-//   return output;
 
 console.log(freshPromotion( 
   [["apple", "apple"], ["banana", "anything", 'banana']] , 

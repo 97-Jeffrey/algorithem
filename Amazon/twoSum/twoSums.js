@@ -3,19 +3,44 @@
 // [2,2,5,3,6], 7 =>true
 
 
-const twoSums = (nums, target) =>{
+// const twoSums = (nums, target) =>{
 
-  let storage  = {};
+//   let storage  = {};
 
-  for (let i=0; i<nums.length; i++){
+//   for (let i=0; i<nums.length; i++){
+//     if(storage[nums[i]]){
+//       return true
+//     }else{
+//       storage[target - nums[i]] = i;
+//     }
+//   }
+//   return false;
+// }
+
+
+var twoSum = function(nums, target) {
+  let storage = {};
+
+  for(let i=0; i<nums.length; i++){
     if(storage[nums[i]]){
-      return true
-    }else{
-      storage[target - nums[i]] = i;
+        return [ storage[nums[i]], i]
     }
+    else{
+        storage[target-nums[i]] = i
+    }
+
   }
-  return false;
-}
+};
+
+/*
+    2, 7, 11, 15
+
+    {
+      7:0
+    }
+
+ */
 
 
-console.log(twoSums([2,2,5,3,6], 12))
+console.log(twoSum([2,7,11,15], 9))
+

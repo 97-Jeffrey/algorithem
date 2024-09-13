@@ -18,3 +18,27 @@ const removeElements = (head, val) =>{
   }
   return head.next;
 }
+
+// solution 2:
+
+const removeElement = (head, val) =>{
+
+  let dummy = new ListNode(-Infinity)
+  dummy.next = head;
+  let prev = dummy;
+  let cur = head;
+
+  while(cur){
+    if(cur.val ===val){
+        prev.next =cur.next;
+        cur = cur.next
+    }
+    else{
+       prev = cur;
+       cur = cur.next
+    }
+  }
+
+  return dummy.next
+
+}

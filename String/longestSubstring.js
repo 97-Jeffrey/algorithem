@@ -18,7 +18,6 @@ const lengthOfLongestSubstring = (str) =>{
   for(let i=0; i<str.length; i++){
     if(!storage[str[i]]){
       storage[str[i]] = true;
-      console.log(storage)
       localMax++;
       
     }else{

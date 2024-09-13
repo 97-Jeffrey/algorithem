@@ -7,6 +7,8 @@
  */
 
 
+
+
 const substringsWithDistChars = (s, k) =>{
 
   let num = 0;
@@ -25,20 +27,6 @@ const substringsWithDistChars = (s, k) =>{
   return num
 }
 
-console.log(substringsWithDistChars("pqpqs", 2))
 
+console.log(findK("pqpqs", 2))
 
-
-// let result = 0;
-//   let set  = new Set();
-
-//   for(let i=0; i<s.length; i++){
-//     for(let j= i; j<s.length; j++){
-//       set.add(s[j])
-//       if(set.size === k){
-//         result ++;
-//       }
-//     }
-//     set.clear() 
-//   }
-//   return result

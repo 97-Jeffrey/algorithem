@@ -6,8 +6,8 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
 
 
   Input: grid = [
-    ["1","1","1","1","0"],
-    ["1","1","0","1","0"],
+    ["0","0","1","1","0"],
+    ["0","1","0","1","0"],
     ["1","1","0","0","0"],
     ["0","0","0","0","0"]
   ]
@@ -27,7 +27,7 @@ An island is surrounded by water and is formed by connecting adjacent lands hori
           numsOfIsland += numberOfIsland(grid, i,j)
        }
      }
-     return numsOfIsland
+     return numsOfIsland  
   }
 
   const numberOfIsland = (grid, i, j)=>{
