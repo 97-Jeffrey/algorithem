@@ -1,7 +1,9 @@
 /*
    Given a string s and a number K, you need to find the length of the longest 
    substring where you can replace no more than K characters to make all the characters 
-   in the substring the same.
+   in the substring the same.  
+
+   
 */
 
 function characterReplacement(s, K) {
