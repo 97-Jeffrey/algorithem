@@ -2,9 +2,9 @@
   Given a binary array, find the length of the longest contiguous subarray containing only 1s. 
   You are allowed to replace at most K 0s with 1s.
 
-
   longestOnes([1,1,0,0,1,1,0,1,0,1,1], 2); // Output: 6
 */
+
 
 function longestOnes(nums, K) {
     let start = 0;
