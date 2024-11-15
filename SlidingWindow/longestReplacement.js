@@ -20,6 +20,7 @@ function characterReplacement(s, K) {
         }
         storage[current] +=1
 
+        
         maxCount = Math.max(maxCount, storage[current]);
 
         if(end-start+1-maxCount > K){
