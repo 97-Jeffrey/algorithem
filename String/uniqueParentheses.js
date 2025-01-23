@@ -32,12 +32,14 @@ const valid = (s) =>{
     const stack = []
 
     for(let i=0; i<s.length; i++){
-        if(mapping[c]){
+        if(mapping[i]){
             if(stack.length === 0) return false;
-            if(mapping[c] !== stack.pop()) return false;
+            if(mapping[i] !== stack.pop()) return false;
         }
         stack.push(s[i])
     }
 
     return stack.length ===0
 }
+
+console.log(valid('()[]{}'))
