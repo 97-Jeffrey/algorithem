@@ -47,5 +47,33 @@ const longestSub = (str) =>{
 
 }
 
+/* 
+  "abcabcbb"
+    
+  { b,  c,  a, }
+  1, 2, 3,  3, 
+*/
 
-console.log(longestSub("abcabcbb"))
+const longestSub2 = str =>{
+
+    let left = 0;
+    const set = new Set();
+    let max = 0;
+
+    for(let right = 0; right<str.length; right++){
+       if(!set.has(str[right])){
+           set.add(str[right]);
+           max = Math.max(max, set.size)
+       }else{
+           set.delete(str[left])
+           left++
+       }
+    
+    }
+
+    return max
+
+}
+
+
+console.log(longestSub2("pwwkew"))

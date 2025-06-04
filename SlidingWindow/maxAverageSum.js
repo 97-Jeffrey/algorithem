@@ -33,5 +33,27 @@ var findMaxAverage = function(nums, k) {
     return max;
 }
 
+var findMaxAverage2 = function(nums, k) {
+    let max = -Infinity;
+    let left = 0;
+    let accumu = 0;
+
+
+    for(let right=0; right<nums.length; right++){
+       accumu += nums[right];
+
+        if(right-left+1 === k){
+           max = Math.max(max, accumu/k);
+           accumu -= nums[left];
+           left++;
+
+       }
+
+       return max
+
+    }
+
+}
+
 
 console.log(findMaxAverage([1,12,-5,-6,50,3], 4))

@@ -38,4 +38,25 @@ var minSubArrayLen = function(target, nums) {
     return minSize
 }
 
-console.log(minSubArrayLen(7, [2,3,1,2,4,3]))
+
+var minSubArrayLen2 = function(target, nums) {
+    let minLen = nums.length;
+    let left = 0;
+    let curMax = 0;
+
+    for(let right=0; right<nums.length; right++){
+        curMax += nums[right];
+
+        while(curMax >= target){
+            minLen = Math.min(minLen, right-left+1)
+            curMax -= nums[left];
+            left++   
+        }
+
+    }
+
+    return minLen;
+}
+
+
+console.log(minSubArrayLen2(7, [2,3,1,2,4,3]))
